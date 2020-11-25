@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rendered Height</title>
+    <meta charset="UTF-8" />
+    <style>
+      div {
+        border: 1px solid green;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      #div1 {
+          height: 100px;
+          padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1">
+      <h1>.getComputedStyle(el).height</h1>
+    </div>
+    <button onclick="alertHeight()">Get Height</button>
+
+    <script>
+      function alertHeight() {
+        // alert(getComputedStyle(document.getElementById("div1")).height);
+        alert(getComputedStyle(document.getElementById("div1")).getPropertyValue("height"));
+      }
+    </script>
+  </body>
+</html>
