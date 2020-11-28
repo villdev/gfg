@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base64 Image</title>
+</head>
+<body>
+    
+    <script>
+        const imgSrc = 'https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0';
+
+        function printToConsole(data) {
+            console.log(data);
+        }
+
+        function toDataURL(src, callback, outputFormat) {
+            var img = new Image();
+            img.src = src;
+            img.crossOrigin = 'Anonymous';
+            img.onload = function() {
+                var canvas = document.createElement('CANVAS');
+                var ctx = canvas.getContext('2d');
+                var dataURL;
+                canvas.height = this.naturalHeight;
+                canvas.width = this.naturalWidth;
+                ctx.drawImage(this, 0, 0);
+                dataURL = canvas.toDataURL(outputFormat);
+                callback(dataURL);
+            };
+        }
+
+        toDataURL(imgSrc, printToConsole);
+
+    </script>
+</body>
+</html>
