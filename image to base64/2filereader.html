@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base64 image</title>
+</head>
+<body>
+    <input type="file" onchange="encodeImageBase64(this)" />
+    <script>
+        function encodeImageBase64(data) {
+            var file = data.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                console.log('RESULT', reader.result)
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
