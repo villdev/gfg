@@ -36,6 +36,7 @@
                 dataURL = canvas.toDataURL(outputFormat);
                 //use the encoded base64 using callback function
                 callback(dataURL);
+                canvas = null;
             };
         }
         toDataURL(imgSrc, printToConsole);
