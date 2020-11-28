@@ -8,30 +8,37 @@
 <body>
     
     <script>
-        const imgSrc = 'https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0';
-
+        // const imgSrc = 'https://cors-enabled-online-image-link........';
+        // we can use relative link like below
+        const imgSrc = "./180.jpg";
         function printToConsole(data) {
             console.log(data);
         }
-
         function toDataURL(src, callback, outputFormat) {
+            //create img obj -> same as document.create img
             var img = new Image();
+            //add src to new img
             img.src = src;
+            //enable cors
             img.crossOrigin = 'Anonymous';
+            //once it loads, run this function
             img.onload = function() {
-                var canvas = document.createElement('CANVAS');
+                //create canvas
+                var canvas = document.createElement('CANVAS'); 
                 var ctx = canvas.getContext('2d');
-                var dataURL;
+                //same dimensions as original img
                 canvas.height = this.naturalHeight;
                 canvas.width = this.naturalWidth;
+                //paint img on canvas
                 ctx.drawImage(this, 0, 0);
+                var dataURL;
+                //convert to data url base64 string
                 dataURL = canvas.toDataURL(outputFormat);
+                //use the encoded base64 using callback function
                 callback(dataURL);
             };
         }
-
         toDataURL(imgSrc, printToConsole);
-
     </script>
 </body>
 </html>
