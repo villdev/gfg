@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base64 image</title>
+</head>
+<body>
+    <script>
+        // const imgSrc = "https://cors-enabled-online-image-link........";
+        const imgSrc = "./180.jpg";
+        function toB64(url) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.responseType = 'arraybuffer';
+            xhr.send();
+            xhr.onload = function() {
+                 // Create a Uint8Array from ArrayBuffer
+                var codes = new Uint8Array(xhr.response);
+                // Get binary string from UTF-16 code units
+                var bin = String.fromCharCode.apply(null, codes);
+                // Convert binary to Base64
+                var dataUrl = btoa(bin);
+                ////use bse64 value here
+                console.log(dataUrl);
+            }
+        };
+        toB64(imgSrc);
+    </script>
+</body>
+</html>

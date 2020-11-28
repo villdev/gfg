@@ -7,24 +7,28 @@
 </head>
 <body>
     <script>
-        const imgSrc = "https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0";
-        function printToConsole(data) {
-            console.log(data);
-        }
-        function toDataURL(url, callback) {
+        // const imgSrc = "https://cors-enabled-online-image-link........";
+        // we can use relative link
+        const imgSrc = "./180.jpg";
+        function toDataURL(url) {
+            //initiate xmlhttprequest and wait for file to load
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url);
+            //get blob response
             xhr.responseType = 'blob';
             xhr.send();
+            //on img load
             xhr.onload = function() {
                 var reader = new FileReader();
-                    reader.readAsDataURL(xhr.response);
+                //read the response as dataURL 
+                reader.readAsDataURL(xhr.response);
                 reader.onloadend = function() {
-                callback(reader.result);
+                    //use bse64 encoded dataURL here
+                    console.log(reader.result);
                 }
             };
         }
-        toDataURL(imgSrc, printToConsole)
+        toDataURL(imgSrc)
     </script>
 </body>
 </html>

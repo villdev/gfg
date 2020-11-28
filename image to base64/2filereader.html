@@ -11,10 +11,12 @@
         function encodeImageBase64(data) {
             var file = data.files[0];
             var reader = new FileReader();
-            reader.onloadend = function() {
-                console.log('RESULT', reader.result)
-            }
+            //read img as dataURL
             reader.readAsDataURL(file);
+            reader.onloadend = function() {
+                //use bse64 encoded dataURL here
+                console.log('dataURL- ', reader.result)
+            }
         }
     </script>
 </body>
